@@ -1,0 +1,90 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Dialog.gd" type="Script" id=1]
+[ext_resource path="res://dialogfont.tres" type="DynamicFont" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "bounce"
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath(".:offset:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath(".:offset:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 0, -0.25, 0, 0.25, 0, 5, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+
+[node name="Dialog" type="Control"]
+pause_mode = 2
+margin_right = 512.0
+margin_bottom = 296.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Dialog Box" type="ColorRect" parent="."]
+anchor_top = 0.595
+anchor_right = 1.016
+anchor_bottom = 1.0
+margin_left = 48.0
+margin_top = 15.88
+margin_right = -48.192
+margin_bottom = -16.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+dialogPath = "res://placeholder.json"
+
+[node name="Name" type="RichTextLabel" parent="Dialog Box"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 96.0
+margin_bottom = 32.0
+custom_fonts/mono_font = ExtResource( 2 )
+custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/default_color = Color( 0.486275, 1, 0.8, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="Dialog Box"]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 384.0
+margin_bottom = 72.0
+custom_fonts/mono_font = ExtResource( 2 )
+custom_fonts/normal_font = ExtResource( 2 )
+custom_colors/default_color = Color( 0.486275, 1, 0.8, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Indicator" type="Polygon2D" parent="Dialog Box"]
+position = Vector2( 395, 62.5 )
+color = Color( 0.486275, 1, 0.8, 1 )
+polygon = PoolVector2Array( 16, 0, 0, 0, 8, 16, 8, 16 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dialog Box/Indicator"]
+autoplay = "bounce"
+anims/bounce = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="Dialog Box"]
+one_shot = true
+
+[node name="Portrait" type="Sprite" parent="Dialog Box"]
+position = Vector2( 60, -50 )
+scale = Vector2( 0.08, 0.08 )
