@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Node2D
+
+var door = preload(\"res://Closed Door.tscn\")
+
+func set_pos(position):
+	self.position = position
+
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 8 )
+
+[node name="RoomScene" type="Node2D"]
+script = SubResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." groups=[
+"Destroy Bullets",
+]]
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 0, 0, 72, 0, 72, 8, 8, 8, 8, 32, 0, 32 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2( 256, 150 )
+polygon = PoolVector2Array( -256, -102, -248, -102, -248, -78, -184, -78, -184, -70, -256, -70 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 88, 72, 152, 72, 152, 48, 160, 48, 160, 80, 88, 80 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PoolVector2Array( 88, 0, 160, 0, 160, 32, 152, 32, 152, 8, 88, 8 )
+
+[node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, 0, 0, 32, 8, 32, 8, 8, 72, 8, 72, 0 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="StaticBody2D"]
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 88, 0, 160, 0, 160, 32, 152, 32, 152, 8, 88, 8 )
+
+[node name="Polygon2D3" type="Polygon2D" parent="StaticBody2D"]
+color = Color( 0.0117647, 0, 0, 1 )
+polygon = PoolVector2Array( 152, 48, 160, 48, 160, 80, 88, 80, 88, 72, 152, 72 )
+
+[node name="Polygon2D4" type="Polygon2D" parent="StaticBody2D"]
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, 48, 8, 48, 8, 72, 72, 72, 72, 80, 0, 80 )
+
+[node name="Doors" type="Area2D" parent="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Doors"]
+position = Vector2( 80, 0 )
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D/Doors"]
+position = Vector2( 160, 40 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D/Doors"]
+position = Vector2( 0, 40 )
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D/Doors"]
+position = Vector2( 80, 80 )
+shape = SubResource( 1 )
