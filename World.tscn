@@ -1,11 +1,150 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://World.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 320, 8 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 160, 8 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 80, 40 )
+
+[node name="Top Border" type="StaticBody2D" parent="." groups=[
+"Destroy Bullets",
+]]
+position = Vector2( 0, -80 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Top Border"]
+position = Vector2( -160, -8 )
+scale = Vector2( 1, 2 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, 0, 160, 0, 160, 8, 0, 8 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="Top Border"]
+position = Vector2( 0, -8 )
+scale = Vector2( 1, 2 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, 0, 160, 0, 160, 8, 0, 8 )
+
+[node name="Polygon2D3" type="Polygon2D" parent="Top Border"]
+position = Vector2( 320, -8 )
+scale = Vector2( 1, 2 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, 0, 160, 0, 160, 8, 0, 8 )
+
+[node name="Polygon2D4" type="Polygon2D" parent="Top Border"]
+position = Vector2( 159, -8 )
+scale = Vector2( 1, 2 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, 0, 84.7888, 0, 161, 0, 161, 8, 0, 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Top Border"]
+position = Vector2( 160, 0 )
+shape = SubResource( 1 )
+
+[node name="Bottom Border" type="StaticBody2D" parent="." groups=[
+"Destroy Bullets",
+]]
+position = Vector2( 0, 240 )
+
+[node name="Polygon2D" type="Polygon2D" parent="Bottom Border"]
+position = Vector2( -160, -8 )
+scale = Vector2( 1, 2 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, 0, 160, 0, 160, 8, 0, 8 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="Bottom Border"]
+position = Vector2( 0, -8 )
+scale = Vector2( 1, 2 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, 0, 160, 0, 160, 8, 0, 8 )
+
+[node name="Polygon2D3" type="Polygon2D" parent="Bottom Border"]
+position = Vector2( 320, -8 )
+scale = Vector2( 1, 2 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, -7.62939e-06, 160, 0, 160, 8, 0, 7.99999 )
+
+[node name="Polygon2D4" type="Polygon2D" parent="Bottom Border"]
+position = Vector2( 159, -8 )
+scale = Vector2( 1, 2 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( 0, 0, 84.7888, 0, 161, -7.62939e-06, 161, 7.99999, 0, 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom Border"]
+position = Vector2( 160, 0 )
+shape = SubResource( 1 )
+
+[node name="Left Border" type="StaticBody2D" parent="." groups=[
+"Destroy Bullets",
+]]
+rotation = 1.5708
+
+[node name="Polygon2D" type="Polygon2D" parent="Left Border"]
+position = Vector2( 1.33514e-05, 150 )
+scale = Vector2( 1, 2 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -7.62939e-06, 1, 80, 1, 80, 9, -7.62939e-06, 9 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="Left Border"]
+position = Vector2( 80, 150 )
+scale = Vector2( 1, 2 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -7.62939e-06, 1, 80, 1, 80, 9, -7.62939e-06, 9 )
+
+[node name="Polygon2D3" type="Polygon2D" parent="Left Border"]
+position = Vector2( 160, 150 )
+scale = Vector2( 1, 2 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -7.62939e-06, 1, 80, 1, 80, 9, -7.62939e-06, 9 )
+
+[node name="Polygon2D4" type="Polygon2D" parent="Left Border"]
+position = Vector2( -80, 150 )
+scale = Vector2( 1, 2 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -7.62939e-06, 1, 80, 1, 80, 9, -7.62939e-06, 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Left Border"]
+position = Vector2( 80, 160 )
+shape = SubResource( 2 )
+
+[node name="Right Border" type="StaticBody2D" parent="." groups=[
+"Destroy Bullets",
+]]
+position = Vector2( 640, -80 )
+rotation = 1.5708
+
+[node name="Polygon2D" type="Polygon2D" parent="Right Border"]
+position = Vector2( 1.33514e-05, 150 )
+scale = Vector2( 1, 2 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -7.62939e-06, 1, 80, 1, 80, 9, -7.62939e-06, 9 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="Right Border"]
+position = Vector2( 80, 150 )
+scale = Vector2( 1, 2 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -7.62939e-06, 1, 80, 1, 80, 9, -7.62939e-06, 9 )
+
+[node name="Polygon2D3" type="Polygon2D" parent="Right Border"]
+position = Vector2( 160, 150 )
+scale = Vector2( 1, 2 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -7.62939e-06, 1, 80, 1, 80, 9, -7.62939e-06, 9 )
+
+[node name="Polygon2D4" type="Polygon2D" parent="Right Border"]
+position = Vector2( 240, 150 )
+scale = Vector2( 1, 2 )
+color = Color( 0, 0, 0, 1 )
+polygon = PoolVector2Array( -7.62939e-06, 1, 80, 1, 80, 9, -7.62939e-06, 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Right Border"]
+position = Vector2( 160, 160 )
+shape = SubResource( 2 )
 [connection signal="shoot" from="Player" to="." method="_on_Player_shoot"]

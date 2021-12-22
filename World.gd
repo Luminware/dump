@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var RoomScene = preload("res://RoomScene.tscn")
+onready var DoorScene = preload("res://DoorScene.tscn")
 
 var rooms = [[0, 0, 0, 0],
 			[0, 0, 0, 0],
@@ -36,9 +37,12 @@ func _ready():
 				var room = RoomScene.instance()
 				var room_pos = Vector2(160*x, 80*y)+Vector2(-160,-80)
 				room.set_pos(room_pos)
-				print("room spawned")
 				self.add_child(room)
-				last_room_pos = room_pos
+			if not row[x]:
+				var door = DoorScene.instance()
+				var door_pos = Vector2(160*x, 80*y)+Vector2(-160,-80)
+				door.set_pos(door_pos)
+				self.add_child(door)
 	
 func _on_Player_shoot(Bullet, direction, location):
 	var b = Bullet.instance()

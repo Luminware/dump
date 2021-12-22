@@ -1,20 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[sub_resource type="GDScript" id=2]
-script/source = "extends Node2D
-
-var door = preload(\"res://Closed Door.tscn\")
-
-func set_pos(position):
-	self.position = position
-
-"
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 8 )
+[ext_resource path="res://RoomScene.gd" type="Script" id=1]
 
 [node name="RoomScene" type="Node2D"]
-script = SubResource( 2 )
+script = ExtResource( 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." groups=[
 "Destroy Bullets",
@@ -48,23 +37,3 @@ polygon = PoolVector2Array( 152, 48, 160, 48, 160, 80, 88, 80, 88, 72, 152, 72 )
 [node name="Polygon2D4" type="Polygon2D" parent="StaticBody2D"]
 color = Color( 0, 0, 0, 1 )
 polygon = PoolVector2Array( 0, 48, 8, 48, 8, 72, 72, 72, 72, 80, 0, 80 )
-
-[node name="Doors" type="Area2D" parent="StaticBody2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Doors"]
-position = Vector2( 80, 0 )
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D/Doors"]
-position = Vector2( 160, 40 )
-rotation = 1.5708
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D/Doors"]
-position = Vector2( 0, 40 )
-rotation = 1.5708
-shape = SubResource( 1 )
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D/Doors"]
-position = Vector2( 80, 80 )
-shape = SubResource( 1 )
